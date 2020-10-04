@@ -6,4 +6,11 @@
  */
 export const omit = (obj, ...fields) => {
 
+  const result = Object.assign({}, obj);
+
+  for (let key of Object.keys(obj)) {
+    if (fields.includes(key)) delete result[key];
+  }
+
+  return result;
 };
