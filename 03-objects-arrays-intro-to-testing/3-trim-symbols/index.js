@@ -6,4 +6,25 @@
  */
 export function trimSymbols(string, size) {
 
+  if (size === undefined) return string;
+
+  let result = "";
+  let prevSymbol = null;
+  let currentSymbolSize = 0;
+
+  for (const symbol of string.split('')) {
+
+    if (symbol === prevSymbol) {
+      currentSymbolSize++;
+    } else {
+      currentSymbolSize = 0;
+      prevSymbol = symbol;
+    }
+
+    if (currentSymbolSize < size) {
+      result += symbol;
+    }
+  }
+
+  return result;
 }
